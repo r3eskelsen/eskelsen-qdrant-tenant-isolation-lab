@@ -1,0 +1,21 @@
+name: esk_lab_10
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.15.5
+    container_name: esk_lab_10_qdrant
+    restart: "no"
+    cpus: "1.0"
+    mem_limit: 1g
+    ports:
+      - "127.0.0.1:6333:6333"
+    networks:
+      - isolation
+    volumes:
+      - qdrant_data:/qdrant/storage
+networks:
+  isolation:
+    name: esk_lab_10_network
+    driver: bridge
+volumes:
+  qdrant_data:
+    name: esk_lab_10_qdrant_data
